@@ -11,7 +11,7 @@ export default function Router() {
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/dashboard" element={<MyPokemon />} />
+          <Route path="/dex" element={<MyPokemon />} />
           <Route path="/detail/:id" element={<DetailPokemon />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
