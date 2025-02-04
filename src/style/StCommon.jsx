@@ -6,8 +6,8 @@ export const StImg = styled.p`
 `;
 
 export const StButton = styled.button`
-  cursor: pointer;
-  background-color: ${({ $bgColor }) => $bgColor};
+  cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
+  background-color: ${(props) => (props.disabled ? "gray" : props.$bgColor)};
   color: #fff;
   border: none;
   border-radius: 7px;
