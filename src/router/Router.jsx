@@ -12,7 +12,7 @@ export default function Router() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dex" element={<MyPokemonBook />} />
-          <Route path="/detail/:id" element={<DetailPokemon />} />
+          <Route path="/detail" element={<DetailPokemon />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Layout>

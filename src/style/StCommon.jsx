@@ -46,6 +46,7 @@ export const StCard = styled.div`
   box-sizing: border-box;
   box-shadow: ${({ $boxShadow }) => $boxShadow};
   flex-direction: column;
+  cursor: ${({ $cursor }) => $cursor};
 `;
 
 export const StH3 = styled.h3`
