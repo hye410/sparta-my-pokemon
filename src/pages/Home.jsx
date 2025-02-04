@@ -1,11 +1,11 @@
 import { Link } from "react-router";
-import { StButton } from "../style/StCommon";
-import { StHome, StImg } from "../style/StHome";
+import { StButton, StImg } from "../style/StCommon";
+import { StHome } from "../style/StHome";
 
 export default function Home() {
   return (
     <StHome>
-      <StImg>
+      <StImg $width="50%" $minWidth="300px">
         <img
           width="100%"
           src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
@@ -18,6 +18,7 @@ export default function Home() {
           $width="15%"
           $minWidth="135px"
           $maxWidth="300px"
+          $bgColor="rgb(213, 6, 12)"
         >
           포켓몬 도감 시작하기
         </StButton>
