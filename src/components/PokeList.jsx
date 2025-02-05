@@ -1,15 +1,18 @@
 import MOCK_DATA from "../data/mockData";
 import { StBoard, StCardWrapper } from "../style/StCommon";
-import PokeCard from "./PokeCard";
+import { createAlert } from "../utils/createAlert";
 import { checkDuplicatedPokemon, checkUnderMaximum } from "../utils/validation";
-import { useAlert } from "../hooks/useAlert";
+import PokeCard from "./PokeCard";
 
 export default function PokeList({ addPokemon }) {
-  const alertDuplication = useAlert("error", "이미 추가된 포켓몬입니다.");
-  const alertMaximum = useAlert(
-    "error",
-    "포켓몬은 최대 6개까지만 선택할 수 있어요."
-  );
+  const alertDuplication = createAlert({
+    type: "error",
+    content: "이미 추가된 포켓몬입니다.",
+  });
+  const alertMaximum = createAlert({
+    type: "error",
+    content: "포켓몬은 최대 6개까지만 선택할 수 있어요.",
+  });
 
   const handleAddPokemon = (targetPokemon) => {
     addPokemon((prev) => {

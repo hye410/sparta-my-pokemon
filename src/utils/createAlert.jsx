@@ -1,5 +1,7 @@
 import Swal from "sweetalert2";
-export const useAlert = (type, content, buttonText) => {
+export const createAlert = (alertContent) => {
+  const { type, content, buttonText } = alertContent;
+
   let alert = {};
   switch (type) {
     case "error":

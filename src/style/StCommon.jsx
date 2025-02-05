@@ -1,17 +1,25 @@
 import styled from "styled-components";
 
-export const StImg = styled.p`
+export const StContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const StP = styled.p`
   width: ${({ $width }) => $width};
   min-width: ${({ $minWidth }) => $minWidth};
+  margin-bottom: ${({ $marginBottom }) => $marginBottom};
 `;
 
 export const StButton = styled.button`
   cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
   background-color: ${(props) => (props.disabled ? "gray" : props.$bgColor)};
-  color: #fff;
+  color: ${({ $color }) => $color || "#fff"};
   border: none;
   border-radius: 7px;
-  padding: 8px 10px;
+  padding: ${({ $padding }) => $padding || "8px 10px"};
   margin: ${({ $margin }) => $margin};
   width: ${({ $width }) => $width};
   min-width: ${({ $minWidth }) => $minWidth};
@@ -64,4 +72,10 @@ export const StH4 = styled.h4`
   text-align: center;
   margin-top: ${({ $marginTop }) => $marginTop};
   margin-bottom: ${({ $marginBottom }) => $marginBottom};
+`;
+
+export const StDl = styled.dl`
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
 `;

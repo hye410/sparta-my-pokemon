@@ -1,9 +1,8 @@
 import { Link } from "react-router";
-import { StButton, StImg } from "../style/StCommon";
-import { StHome } from "../style/StHome";
+import { StContainer, StButton, StP } from "../style/StCommon";
 
 const styles = {
-  StImg: {
+  StP: {
     $width: "50%",
     $minWidth: "300px",
   },
@@ -18,17 +17,17 @@ const styles = {
 
 export default function Home() {
   return (
-    <StHome>
-      <StImg {...styles.StImg}>
+    <StContainer>
+      <StP {...styles.StP}>
         <img
           width="100%"
           src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
           alt="my pokemon book"
         />
-      </StImg>
+      </StP>
       <Link to="/dex">
         <StButton {...styles.StButton}>포켓몬 도감 시작하기</StButton>
       </Link>
-    </StHome>
+    </StContainer>
   );
 }
