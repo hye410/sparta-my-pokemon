@@ -5,6 +5,10 @@ import { checkDuplicatedPokemon, checkUnderMaximum } from "../utils/validation";
 import PokeCard from "./PokeCard";
 
 export default function PokeList({ addPokemon }) {
+  const alertSuccess = createAlert({
+    type: "success",
+    content: "포켓볼에 추가되었습니다.",
+  });
   const alertDuplication = createAlert({
     type: "error",
     content: "이미 추가된 포켓몬입니다.",
@@ -20,7 +24,10 @@ export default function PokeList({ addPokemon }) {
         checkUnderMaximum(prev) &&
         !checkDuplicatedPokemon(prev, targetPokemon.id);
 
-      if (isValid) return [...prev, targetPokemon];
+      if (isValid) {
+        alertSuccess();
+        return [...prev, targetPokemon];
+      }
 
       if (!checkUnderMaximum(prev)) {
         alertMaximum();
