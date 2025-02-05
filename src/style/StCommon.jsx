@@ -42,7 +42,7 @@ export const StCard = styled.div`
   background-color: rgb(254, 254, 254);
   padding: 35px;
   margin: 10px;
-  width: ${({ $width = "150px" }) => $width};
+  width: ${({ $isAdd }) => ($isAdd ? "200px" : "150px")};
   border-radius: 7px;
   box-sizing: border-box;
   box-shadow: ${({ $boxShadow = "none" }) => $boxShadow};
@@ -54,6 +54,7 @@ export const StP = styled.p`
   min-width: ${({ $minWidth = "300px" }) => $minWidth};
   margin-bottom: ${({ $marginBottom = "0px" }) => $marginBottom};
   text-align: center;
+  word-break: keep-all;
 `;
 
 export const StButton = styled.button`
@@ -70,7 +71,7 @@ export const StButton = styled.button`
 `;
 
 export const StH3 = styled.h3`
-  color: ${({ $color }) => $color};
+  color: ${({ $color = "rgb(255, 10, 19)" }) => $color};
   font-size: 32px;
   text-align: center;
   margin-top: ${({ $marginTop }) => $marginTop};
@@ -78,7 +79,7 @@ export const StH3 = styled.h3`
 `;
 
 export const StH4 = styled.h4`
-  color: ${({ $color }) => $color};
+  color: ${({ $color = "rgb(255, 10, 19)" }) => $color};
   font-size: 20px;
   font-weight: bold;
   text-align: center;

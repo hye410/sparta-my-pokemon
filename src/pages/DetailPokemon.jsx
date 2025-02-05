@@ -13,22 +13,6 @@ const { OVER, ADD, DUPLICATED } = ALERT_MESSAGE;
 const { PASS, OVER_MAXIMUM, DUPLICATION } = VALIDATION_RESULT;
 
 const _MOCK_DATA = new Map(MOCK_DATA.map((data) => [String(data.id), data]));
-const styles = {
-  StImg: {
-    $width: "300px",
-  },
-  StH3: {
-    $marginBottom: "40px",
-    $color: "red",
-  },
-  StP: {
-    $marginBottom: "50px",
-  },
-  StButton: {
-    $padding: "11px 20px",
-    $width: "100px",
-  },
-};
 
 export default function DetailPokemon() {
   const dispatch = useDispatch();
@@ -36,6 +20,7 @@ export default function DetailPokemon() {
   const [searchParams] = useSearchParams();
   const [pokemon, setPokemon] = useState([]);
   const navigate = useNavigate();
+
   useEffect(() => {
     const targetId = searchParams.get("id");
     const targetData = _MOCK_DATA.get(targetId);
@@ -72,24 +57,26 @@ export default function DetailPokemon() {
 
   return (
     <StContainer>
-      <StP {...styles.StImg}>
+      <StP $width="300px">
         <img width="100%" src={pokemon.img_url} alt={pokemon.korean_name} />
       </StP>
-      <StH3 {...styles.StH3}>{pokemon.korean_name}</StH3>
+      <StH3 $marginBottom="40px">{pokemon.korean_name}</StH3>
       <StDl>
         <dt>타입 :&nbsp;</dt>
         <dd>{pokemon.types?.join(",")}</dd>
       </StDl>
-      <StP {...styles.StP}>{pokemon.description}</StP>
+      <StP $marginBottom="50px">{pokemon.description}</StP>
       <StButton
-        {...styles.StButton}
+        $padding="11px 20px"
+        $width="100px"
         $margin="0 0 20px 0"
         onClick={() => handleAddPokemon(pokemon)}
       >
         추가
       </StButton>
       <StButton
-        {...styles.StButton}
+        $padding="11px 20px"
+        $width="100px"
         $bgColor="rgb(25,25,25)"
         onClick={handleBack}
       >
