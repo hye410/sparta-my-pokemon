@@ -1,7 +1,9 @@
+import { useDispatch, useSelector } from "react-redux";
 import { StBoard, StCardWrapper, StH3 } from "../style/StCommon";
 import { MAXIMUM_POKEMON } from "../utils/validation";
 import PokeBall from "./PokeBall";
 import PokeCard from "./PokeCard";
+import { deletePokemon } from "../redux/store/pokemonSlice";
 
 const styles = {
   StBoard: { $marginBottom: "20px" },
@@ -11,7 +13,10 @@ const styles = {
   },
 };
 
-export default function Dashboard({ pokemonList, setMyPokemonList }) {
+export default function Dashboard() {
+  const pokemonList = useSelector((state) => state.pokemon);
+  const dispatch = useDispatch();
+
   const initPokeBall = new Array(MAXIMUM_POKEMON - pokemonList.length).fill(
     null
   );
@@ -19,10 +24,7 @@ export default function Dashboard({ pokemonList, setMyPokemonList }) {
 
   const handleDelete = (targetPokemon) => {
     const { id } = targetPokemon;
-    const newPokemonList = myPokemonList.filter((pokemon) =>
-      pokemon ? pokemon.id !== id : pokemon
-    );
-    setMyPokemonList(newPokemonList);
+    dispatch(deletePokemon(id));
   };
 
   return (
