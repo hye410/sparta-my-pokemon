@@ -6,6 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { addPokemon } from "../redux/store/pokemonSlice";
 import { checkValidPokemon } from "../utils/validation";
 import { createAlert } from "../utils/createAlert";
+import { ALERT_TYPE, VALIDATION_RESULT } from "../constant/constant";
+import { ALERT_MESSAGE } from "../constant/message";
+const { SUCCESS, ERROR } = ALERT_TYPE;
+const { OVER, ADD, DUPLICATED } = ALERT_MESSAGE;
+const { PASS, OVER_MAXIMUM, DUPLICATION } = VALIDATION_RESULT;
 
 const _MOCK_DATA = new Map(MOCK_DATA.map((data) => [String(data.id), data]));
 const styles = {
@@ -20,7 +25,6 @@ const styles = {
     $marginBottom: "50px",
   },
   StButton: {
-    // $bgColor: "rgb(26,26,26)",
     $padding: "11px 20px",
     $width: "100px",
   },
@@ -42,28 +46,28 @@ export default function DetailPokemon() {
     navigate(-1);
   };
   const alertSuccess = createAlert({
-    type: "success",
-    content: "포켓볼에 추가되었습니다.",
+    type: SUCCESS,
+    content: ADD,
   });
 
   const alertDuplication = createAlert({
-    type: "error",
-    content: "이미 추가된 포켓몬입니다.",
+    type: ERROR,
+    content: DUPLICATED,
   });
 
   const alertMaximum = createAlert({
-    type: "error",
-    content: "포켓몬은 최대 6개까지만 선택할 수 있어요.",
+    type: ERROR,
+    content: OVER,
   });
 
   const handleAddPokemon = (newPokemon) => {
     const validResult = checkValidPokemon(pokemonList, newPokemon);
-    if (validResult === "pass") {
+    if (validResult === PASS) {
       alertSuccess();
       dispatch(addPokemon(newPokemon));
     }
-    if (validResult === "overMaximum") alertMaximum();
-    if (validResult === "duplication") alertDuplication();
+    if (validResult === OVER_MAXIMUM) alertMaximum();
+    if (validResult === DUPLICATION) alertDuplication();
   };
 
   return (

@@ -4,36 +4,40 @@ import { StBoard, StCardWrapper } from "../style/StCommon";
 import { createAlert } from "../utils/createAlert";
 import { checkValidPokemon } from "../utils/validation";
 import PokeCard from "./PokeCard";
-
 import { addPokemon } from "../redux/store/pokemonSlice";
+import { ALERT_TYPE, VALIDATION_RESULT } from "../constant/constant";
+import { ALERT_MESSAGE } from "../constant/message";
+const { SUCCESS, ERROR } = ALERT_TYPE;
+const { OVER, ADD, DUPLICATED } = ALERT_MESSAGE;
+const { PASS, OVER_MAXIMUM, DUPLICATION } = VALIDATION_RESULT;
 
 export default function PokeList() {
   const pokemonList = useSelector((state) => state.pokemon);
   const dispatch = useDispatch();
 
   const alertSuccess = createAlert({
-    type: "success",
-    content: "포켓볼에 추가되었습니다.",
+    type: SUCCESS,
+    content: ADD,
   });
 
   const alertDuplication = createAlert({
-    type: "error",
-    content: "이미 추가된 포켓몬입니다.",
+    type: ERROR,
+    content: DUPLICATED,
   });
 
   const alertMaximum = createAlert({
-    type: "error",
-    content: "포켓몬은 최대 6개까지만 선택할 수 있어요.",
+    type: ERROR,
+    content: OVER,
   });
 
   const handleAddPokemon = (targetPokemon) => {
     const validResult = checkValidPokemon(pokemonList, targetPokemon);
-    if (validResult === "pass") {
+    if (validResult === PASS) {
       alertSuccess();
       dispatch(addPokemon(targetPokemon));
     }
-    if (validResult === "overMaximum") alertMaximum();
-    if (validResult === "duplication") alertDuplication();
+    if (validResult === OVER_MAXIMUM) alertMaximum();
+    if (validResult === DUPLICATION) alertDuplication();
   };
 
   return (

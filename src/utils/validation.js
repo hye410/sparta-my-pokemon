@@ -1,4 +1,8 @@
+import { VALIDATION_RESULT } from "../constant/constant";
+
+const { PASS, OVER_MAXIMUM, DUPLICATION } = VALIDATION_RESULT;
 export const MAXIMUM_POKEMON = 6;
+
 const checkUnderMaximum = (list) => {
   return list.length < MAXIMUM_POKEMON;
 };
@@ -15,9 +19,9 @@ export const checkValidPokemon = (pokemonList, newPokemon) => {
     checkUnderMaximum(pokemonList) &&
     !checkDuplicatedPokemon(pokemonList, newPokemon.id);
 
-  if (isValid) return "pass";
+  if (isValid) return PASS;
 
-  if (!checkUnderMaximum(pokemonList)) return "overMaximum";
+  if (!checkUnderMaximum(pokemonList)) return OVER_MAXIMUM;
 
-  if (checkDuplicatedPokemon(pokemonList, newPokemon.id)) return "duplication";
+  if (checkDuplicatedPokemon(pokemonList, newPokemon.id)) return DUPLICATION;
 };
