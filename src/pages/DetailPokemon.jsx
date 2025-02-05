@@ -18,6 +18,7 @@ const styles = {
   StButton: {
     $bgColor: "rgb(26,26,26)",
     $padding: "11px 20px",
+    $width: "100px",
   },
 };
 

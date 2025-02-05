@@ -12,8 +12,6 @@ const styles = {
     $marginBottom: "25px",
   },
   StButton: {
-    $bgColor: "rgb(255, 10, 19)",
-    $width: "50px",
     $margin: "25px 0 0 0",
   },
 };

@@ -1,35 +1,30 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const StContainer = styled.div`
+const columnFlex = css`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
-export const StP = styled.p`
-  width: ${({ $width }) => $width};
-  min-width: ${({ $minWidth }) => $minWidth};
-  margin-bottom: ${({ $marginBottom }) => $marginBottom};
+export const StLayout = styled.div`
+  ${columnFlex}
+  background-color: rgb(255, 227, 184);
+  width: 100vw;
+  min-height: 100vh;
+  padding: 3vw;
+  box-sizing: border-box;
 `;
 
-export const StButton = styled.button`
-  cursor: ${(props) => (props.disabled ? "auto" : "pointer")};
-  background-color: ${(props) => (props.disabled ? "gray" : props.$bgColor)};
-  color: ${({ $color }) => $color || "#fff"};
-  border: none;
-  border-radius: 7px;
-  padding: ${({ $padding }) => $padding || "8px 10px"};
-  margin: ${({ $margin }) => $margin};
-  width: ${({ $width }) => $width};
-  min-width: ${({ $minWidth }) => $minWidth};
-  max-width: ${({ $maxWidth }) => $maxWidth};
+export const StContainer = styled.div`
+  ${columnFlex}
+  width : 100%;
 `;
 
 export const StBoard = styled.section`
   background-color: rgb(247, 247, 247);
   padding: 3vh 2vh;
-  margin-bottom: ${({ $marginBottom }) => $marginBottom};
+  margin-bottom: ${({ $marginBottom = "0px" }) => $marginBottom};
   border-radius: 5px;
 `;
 
@@ -37,24 +32,41 @@ export const StCardWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin-bottom: 20px;
   flex-wrap: wrap;
+  margin-bottom: 20px;
 `;
 
 export const StCard = styled.div`
-  border: ${({ $border }) => $border};
+  ${columnFlex}
+  border: ${({ $border = "none" }) => $border};
   background-color: rgb(254, 254, 254);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 35px;
   margin: 10px;
-  width: ${({ $width }) => $width};
+  width: ${({ $width = "150px" }) => $width};
   border-radius: 7px;
   box-sizing: border-box;
-  box-shadow: ${({ $boxShadow }) => $boxShadow};
-  flex-direction: column;
-  cursor: ${({ $cursor }) => $cursor};
+  box-shadow: ${({ $boxShadow = "none" }) => $boxShadow};
+  cursor: ${({ $cursor = "auto" }) => $cursor};
+`;
+
+export const StP = styled.p`
+  width: ${({ $width = "50%" }) => $width};
+  min-width: ${({ $minWidth = "300px" }) => $minWidth};
+  margin-bottom: ${({ $marginBottom = "0px" }) => $marginBottom};
+  text-align: center;
+`;
+
+export const StButton = styled.button`
+  cursor: pointer;
+  background-color: ${({ $bgColor = "rgb(255, 10, 19)" }) => $bgColor};
+  color: ${({ $color = "#fff" }) => $color};
+  border: none;
+  border-radius: 7px;
+  padding: ${({ $padding = "8px 10px" }) => $padding};
+  margin: ${({ $margin = "0px" }) => $margin};
+  width: ${({ $width = "50px" }) => $width};
+  min-width: ${({ $minWidth }) => $minWidth};
+  max-width: ${({ $maxWidth }) => $maxWidth};
 `;
 
 export const StH3 = styled.h3`
@@ -75,7 +87,7 @@ export const StH4 = styled.h4`
 `;
 
 export const StDl = styled.dl`
-  display: flex;
-  align-items: center;
+  ${columnFlex}
+  flex-direction: row;
   margin-bottom: 40px;
 `;

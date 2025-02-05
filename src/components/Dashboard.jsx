@@ -6,7 +6,6 @@ import PokeCard from "./PokeCard";
 const styles = {
   StBoard: { $marginBottom: "20px" },
   StH3: {
-    $color: "rgb(246, 12, 20)",
     $marginBottom: "50px",
     $marginTop: "50px",
   },

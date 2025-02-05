@@ -3,7 +3,6 @@ import { StCard, StP } from "../style/StCommon";
 const style = {
   StCard: {
     $border: "3px dashed rgb(205, 205, 205)",
-    $width: "150px",
   },
   StP: {
     $minWidth: "60px",
