@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MOCK_DATA from "../data/mockData";
 import { StBoard, StCardWrapper } from "../style/StCommon";
 import { createAlert } from "../utils/createAlert";
-import { checkDuplicatedPokemon, checkUnderMaximum } from "../utils/validation";
+import { checkValidPokemon } from "../utils/validation";
 import PokeCard from "./PokeCard";
 
 import { addPokemon } from "../redux/store/pokemonSlice";
@@ -27,22 +27,13 @@ export default function PokeList() {
   });
 
   const handleAddPokemon = (targetPokemon) => {
-    const isValid =
-      checkUnderMaximum(pokemonList) &&
-      !checkDuplicatedPokemon(pokemonList, targetPokemon.id);
-
-    if (isValid) {
+    const validResult = checkValidPokemon(pokemonList, targetPokemon);
+    if (validResult === "pass") {
       alertSuccess();
       dispatch(addPokemon(targetPokemon));
     }
-
-    if (!checkUnderMaximum(pokemonList)) {
-      alertMaximum();
-    }
-
-    if (checkDuplicatedPokemon(pokemonList, targetPokemon.id)) {
-      alertDuplication();
-    }
+    if (validResult === "overMaximum") alertMaximum();
+    if (validResult === "duplication") alertDuplication();
   };
 
   return (
