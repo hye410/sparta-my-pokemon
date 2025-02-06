@@ -4,10 +4,22 @@ import { MAXIMUM_POKEMON } from "../utils/validation";
 import PokeBall from "./PokeBall";
 import PokeCard from "./PokeCard";
 import { deletePokemon } from "../redux/store/pokemonSlice";
+import { createAlert } from "../utils/createAlert";
+import { ALERT_TYPE } from "../constant/constant";
 
+const { WARNING, SUCCESS } = ALERT_TYPE;
 export default function Dashboard() {
   const pokemonList = useSelector((state) => state.pokemon);
   const dispatch = useDispatch();
+  const deleteAlert = createAlert({
+    type: WARNING,
+    content: "포켓몬을 삭제하시겠습니까?",
+  });
+
+  const deleteSuccessAlert = createAlert({
+    type: SUCCESS,
+    content: "포켓몬이 삭제되었습니다.",
+  });
 
   const initPokeBall = new Array(MAXIMUM_POKEMON - pokemonList.length).fill(
     null
@@ -16,7 +28,12 @@ export default function Dashboard() {
 
   const handleDelete = (targetPokemon) => {
     const { id } = targetPokemon;
-    dispatch(deletePokemon(id));
+    deleteAlert().then((res) => {
+      if (res.isConfirmed) {
+        deleteSuccessAlert();
+        dispatch(deletePokemon(id));
+      }
+    });
   };
 
   return (
