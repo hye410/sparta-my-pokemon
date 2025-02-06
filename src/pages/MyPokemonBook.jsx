@@ -1,4 +1,4 @@
-import Dashboard from "../components/DashBoard";
+import Dashboard from "../components/Dashboard";
 import PokeList from "../components/PokeList";
 import { StMyPokemonBook } from "../style/StMyPokemonBook";
 

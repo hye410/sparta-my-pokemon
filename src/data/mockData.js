@@ -1230,4 +1230,16 @@ const MOCK_DATA = [
       "에스퍼 타입의 전설의 포켓몬으로, 희귀하고 신비로운 능력을 가집니다.",
   },
 ];
-export default MOCK_DATA;
+
+const parsedData = (data) => {
+  return data.map((_data) => {
+    const parsedNumber = (id) => {
+      const digits = String(MOCK_DATA.length).length;
+      return String(id).padStart(digits, 0);
+    };
+
+    return { ..._data, parsedId: parsedNumber(_data.id) };
+  });
+};
+
+export default parsedData(MOCK_DATA);

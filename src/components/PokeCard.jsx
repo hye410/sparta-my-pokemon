@@ -25,7 +25,7 @@ export default function PokeCard({ data, actionType = "add", handleAction }) {
       <StH4 $marginTop="45px" $marginBottom="25px">
         {data.korean_name}
       </StH4>
-      <p>No. d0{data.id}</p>
+      <p>No. {data.parsedId}</p>
       <StButton $margin="25px 0 0 0" onClick={(e) => handleAddPokemon(e, data)}>
         {isAdd ? "추가" : "삭제"}
       </StButton>
