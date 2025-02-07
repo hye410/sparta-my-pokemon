@@ -5,6 +5,7 @@ export const createAlert = (alertContent) => {
   const { type, content, buttonText } = alertContent;
 
   let alert = {};
+
   switch (type) {
     case ERROR:
       alert = {

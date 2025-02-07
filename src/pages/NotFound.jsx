@@ -3,9 +3,12 @@ import { Button, FlexBox, H1 } from "../style/styledComponents";
 
 export default function NotFound() {
   const navigate = useNavigate();
+
+  // 홈으로 돌아가는 함수
   const goToHome = () => {
     navigate("/", { replace: true });
   };
+
   return (
     <FlexBox $flexDirection="column">
       <H1>Page not found</H1>

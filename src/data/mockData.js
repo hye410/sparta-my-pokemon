@@ -1231,6 +1231,7 @@ const MOCK_DATA = [
   },
 ];
 
+// 포켓몬 리스트에 No.가 00x로 표현되어 데이터를 화면에 뿌리기 전에 미리 파싱 작업
 const parsedData = (data) => {
   return data.map((_data) => {
     const padId = (id) => {

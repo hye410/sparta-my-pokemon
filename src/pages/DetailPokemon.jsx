@@ -12,6 +12,7 @@ const { SUCCESS, ERROR } = ALERT_TYPE;
 const { OVER, ADD, DUPLICATED } = ALERT_MESSAGE;
 const { PASS, OVER_MAXIMUM, DUPLICATION } = VALIDATION_RESULT;
 
+// MOCK_DATA를 Map()으로 처리해 해당 포켓몬을 좀 더 빨리 찾아올 수 있도록 처리
 const _MOCK_DATA = new Map(MOCK_DATA.map((data) => [String(data.id), data]));
 
 export default function DetailPokemon() {
@@ -27,32 +28,40 @@ export default function DetailPokemon() {
     setPokemon(targetPokemonData);
   }, [searchParams]);
 
+  // 뒤로가기를 실행하는 함수
   const handleGoBack = () => {
     navigate(-1);
   };
-  const alertSuccess = createAlert({
+
+  // 추가 완료 팝업
+  const successAlert = createAlert({
     type: SUCCESS,
     content: ADD,
   });
 
-  const alertDuplication = createAlert({
+  // 중복된 포켓몬을 알리는 팝업
+  const duplicationAlert = createAlert({
     type: ERROR,
     content: DUPLICATED,
   });
 
-  const alertMaximum = createAlert({
+  // 추가 가능 개수를 초과함을 알리는 팝업
+  const overMaximumAlert = createAlert({
     type: ERROR,
     content: OVER,
   });
 
+  // 포켓몬을 추가하는 함수
   const handleAddPokemon = (newPokemon) => {
-    const validationResult = checkValidPokemon(pokemonList, newPokemon);
+    const validationResult = checkValidPokemon(pokemonList, newPokemon); // 나만의 포켓몬에 추가할 수 있는지 유효성 검사를 실시
+
     if (validationResult === PASS) {
-      alertSuccess();
+      successAlert();
       dispatch(addPokemon(newPokemon));
-    }
-    if (validationResult === OVER_MAXIMUM) alertMaximum();
-    if (validationResult === DUPLICATION) alertDuplication();
+    } // 검사 통과
+
+    if (validationResult === OVER_MAXIMUM) overMaximumAlert(); // 추가 가능 개수 초과
+    if (validationResult === DUPLICATION) duplicationAlert(); // 중복된 포켓몬
   };
 
   return (
