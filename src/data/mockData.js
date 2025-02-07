@@ -1231,15 +1231,16 @@ const MOCK_DATA = [
   },
 ];
 
+// 00x 형태로 바꿔주는 함수
+const getPadId = (id) => {
+  const digits = String(MOCK_DATA.length).length;
+  return String(id).padStart(digits, 0);
+};
+
 // 포켓몬 리스트에 No.가 00x로 표현되어 데이터를 화면에 뿌리기 전에 미리 파싱 작업
 const parsedData = (data) => {
   return data.map((_data) => {
-    const padId = (id) => {
-      const digits = String(MOCK_DATA.length).length;
-      return String(id).padStart(digits, 0);
-    };
-
-    return { ..._data, padId: padId(_data.id) };
+    return { ..._data, padId: getPadId(_data.id) };
   });
 };
 
