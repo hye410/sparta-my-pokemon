@@ -22,12 +22,12 @@ export default function DetailPokemon() {
   const [pokemon, setPokemon] = useState([]);
 
   useEffect(() => {
-    const targetId = searchParams.get("id");
-    const targetData = _MOCK_DATA.get(targetId);
-    setPokemon(targetData);
+    const targetPokemonId = searchParams.get("id");
+    const targetPokemonData = _MOCK_DATA.get(targetPokemonId);
+    setPokemon(targetPokemonData);
   }, [searchParams]);
 
-  const handleBack = () => {
+  const handleGoBack = () => {
     navigate(-1);
   };
   const alertSuccess = createAlert({
@@ -46,13 +46,13 @@ export default function DetailPokemon() {
   });
 
   const handleAddPokemon = (newPokemon) => {
-    const validResult = checkValidPokemon(pokemonList, newPokemon);
-    if (validResult === PASS) {
+    const validationResult = checkValidPokemon(pokemonList, newPokemon);
+    if (validationResult === PASS) {
       alertSuccess();
       dispatch(addPokemon(newPokemon));
     }
-    if (validResult === OVER_MAXIMUM) alertMaximum();
-    if (validResult === DUPLICATION) alertDuplication();
+    if (validationResult === OVER_MAXIMUM) alertMaximum();
+    if (validationResult === DUPLICATION) alertDuplication();
   };
 
   return (
@@ -78,7 +78,7 @@ export default function DetailPokemon() {
         $padding="11px 20px"
         $width="100px"
         $bgColor="rgb(25,25,25)"
-        onClick={handleBack}
+        onClick={handleGoBack}
       >
         뒤로가기
       </Button>

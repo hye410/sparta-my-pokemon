@@ -1233,12 +1233,12 @@ const MOCK_DATA = [
 
 const parsedData = (data) => {
   return data.map((_data) => {
-    const parsedNumber = (id) => {
+    const padId = (id) => {
       const digits = String(MOCK_DATA.length).length;
       return String(id).padStart(digits, 0);
     };
 
-    return { ..._data, parsedId: parsedNumber(_data.id) };
+    return { ..._data, padId: padId(_data.id) };
   });
 };
 

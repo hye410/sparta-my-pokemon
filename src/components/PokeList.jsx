@@ -31,13 +31,13 @@ export default function PokeList() {
   });
 
   const handleAddPokemon = (targetPokemon) => {
-    const validResult = checkValidPokemon(pokemonList, targetPokemon);
-    if (validResult === PASS) {
+    const validationResult = checkValidPokemon(pokemonList, targetPokemon);
+    if (validationResult === PASS) {
       alertSuccess();
       dispatch(addPokemon(targetPokemon));
     }
-    if (validResult === OVER_MAXIMUM) alertMaximum();
-    if (validResult === DUPLICATION) alertDuplication();
+    if (validationResult === OVER_MAXIMUM) alertMaximum();
+    if (validationResult === DUPLICATION) alertDuplication();
   };
 
   return (
@@ -51,7 +51,7 @@ export default function PokeList() {
           <PokeCard
             key={`pokemonCard_${data.id}`}
             data={data}
-            handleAction={handleAddPokemon}
+            buttonEventHandler={handleAddPokemon}
           />
         ))}
       </FlexBox>

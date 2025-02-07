@@ -8,6 +8,7 @@ import { createAlert } from "../utils/createAlert";
 import { ALERT_TYPE } from "../constant/constant";
 
 const { WARNING, SUCCESS } = ALERT_TYPE;
+
 export default function Dashboard() {
   const pokemonList = useSelector((state) => state.pokemon);
   const dispatch = useDispatch();
@@ -51,8 +52,8 @@ export default function Dashboard() {
             <PokeCard
               key={`pokemonCard_${pokemon.id}`}
               data={pokemon}
-              actionType={"delete"}
-              handleAction={handleDelete}
+              buttonType={"delete"}
+              buttonEventHandler={handleDelete}
             />
           ) : (
             <PokeBall key={`pokeBall_${idx}`} />
