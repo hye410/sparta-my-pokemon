@@ -23,6 +23,7 @@ export const FlexBox = styled.div`
   flex-wrap: ${(props) => props.$flexWrap || "nowrap"};
   flex-direction: ${(props) => props.$flexDirection || "row"};
   margin-bottom: ${(props) => props.$marginBottom};
+  width: ${(props) => props.$width};
 `;
 
 export const FlexLayout = styled(FlexBox)`

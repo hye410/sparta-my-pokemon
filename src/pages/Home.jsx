@@ -3,7 +3,7 @@ import { FlexBox, Button, P } from "../style/styledComponents";
 
 export default function Home() {
   return (
-    <FlexBox $flexDirection="column">
+    <FlexBox $flexDirection="column" $width="100%">
       <P>
         <img
           width="100%"
