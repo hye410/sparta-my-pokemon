@@ -1,5 +1,5 @@
-import { StLayout } from "../style/StCommon";
+import { FlexLayout } from "../style/styledComponents";
 
 export default function Layout({ children }) {
-  return <StLayout>{children}</StLayout>;
+  return <FlexLayout $flexDirection="column">{children}</FlexLayout>;
 }

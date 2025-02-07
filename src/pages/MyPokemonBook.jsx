@@ -1,12 +1,12 @@
 import Dashboard from "../components/Dashboard";
 import PokeList from "../components/PokeList";
-import { StMyPokemonBook } from "../style/StMyPokemonBook";
+import { Article } from "../style/styledComponents";
 
 export default function MyPokemonBook() {
   return (
-    <StMyPokemonBook>
+    <Article>
       <Dashboard />
       <PokeList />
-    </StMyPokemonBook>
+    </Article>
   );
 }

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { StBoard, StCardWrapper, StH3 } from "../style/StCommon";
+import { Board, FlexBox, H3 } from "../style/styledComponents";
 import { MAXIMUM_POKEMON } from "../utils/validation";
 import PokeBall from "./PokeBall";
 import PokeCard from "./PokeCard";
@@ -37,11 +37,15 @@ export default function Dashboard() {
   };
 
   return (
-    <StBoard $marginBottom="20px">
-      <StH3 $marginBottom="50px" $marginTop="50px">
+    <Board $marginBottom="20px">
+      <H3 $marginBottom="50px" $marginTop="50px">
         나만의 포켓몬
-      </StH3>
-      <StCardWrapper>
+      </H3>
+      <FlexBox
+        $justifyContent="space-evenly"
+        $flexWrap="wrap"
+        $marginBottom="20px"
+      >
         {myPokemonList.map((pokemon, idx) =>
           pokemon ? (
             <PokeCard
@@ -54,7 +58,7 @@ export default function Dashboard() {
             <PokeBall key={`pokeBall_${idx}`} />
           )
         )}
-      </StCardWrapper>
-    </StBoard>
+      </FlexBox>
+    </Board>
   );
 }

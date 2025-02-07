@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { StContainer, StButton, StP } from "../style/StCommon";
+import { FlexBox, Button, P } from "../style/styledComponents";
 
 const styles = {
   StButton: {
@@ -12,17 +12,17 @@ const styles = {
 
 export default function Home() {
   return (
-    <StContainer>
-      <StP>
+    <FlexBox $flexDirection="column">
+      <P>
         <img
           width="100%"
           src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"
           alt="my pokemon book"
         />
-      </StP>
+      </P>
       <Link to="/dex">
-        <StButton {...styles.StButton}>포켓몬 도감 시작하기</StButton>
+        <Button {...styles.StButton}>포켓몬 도감 시작하기</Button>
       </Link>
-    </StContainer>
+    </FlexBox>
   );
 }

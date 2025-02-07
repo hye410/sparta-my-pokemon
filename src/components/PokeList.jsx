@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import MOCK_DATA from "../data/mockData";
-import { StBoard, StCardWrapper } from "../style/StCommon";
+import { Board, FlexBox } from "../style/styledComponents";
 import { createAlert } from "../utils/createAlert";
 import { checkValidPokemon } from "../utils/validation";
 import PokeCard from "./PokeCard";
@@ -41,8 +41,12 @@ export default function PokeList() {
   };
 
   return (
-    <StBoard>
-      <StCardWrapper>
+    <Board>
+      <FlexBox
+        $justifyContent="space-evenly"
+        $marginBottom="20px"
+        $flexWrap="wrap"
+      >
         {MOCK_DATA.map((data) => (
           <PokeCard
             key={`pokemonCard_${data.id}`}
@@ -50,7 +54,7 @@ export default function PokeList() {
             handleAction={handleAddPokemon}
           />
         ))}
-      </StCardWrapper>
-    </StBoard>
+      </FlexBox>
+    </Board>
   );
 }
