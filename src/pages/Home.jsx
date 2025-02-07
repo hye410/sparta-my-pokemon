@@ -1,15 +1,6 @@
 import { Link } from "react-router";
 import { FlexBox, Button, P } from "../style/styledComponents";
 
-const styles = {
-  StButton: {
-    $margin: "3vh 0 0 0",
-    $width: "15%",
-    $minWidth: "135px",
-    $maxWidth: "300px",
-  },
-};
-
 export default function Home() {
   return (
     <FlexBox $flexDirection="column">
@@ -21,7 +12,14 @@ export default function Home() {
         />
       </P>
       <Link to="/dex">
-        <Button {...styles.StButton}>포켓몬 도감 시작하기</Button>
+        <Button
+          $margin="3vh 0 0 0"
+          $width="15%"
+          $minWidth="135px"
+          $maxWidth="300px"
+        >
+          포켓몬 도감 시작하기
+        </Button>
       </Link>
     </FlexBox>
   );
