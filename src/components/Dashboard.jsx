@@ -8,17 +8,7 @@ import { ALERT_TYPE } from "../constant/constant";
 const { WARNING, SUCCESS } = ALERT_TYPE;
 
 export default function Dashboard({ pokemonList, setMyPokemonList }) {
-  // 삭제 재확인 팝업
-  const confirmDelete = createAlert({
-    type: WARNING,
-    content: "포켓몬을 삭제하시겠습니까?",
-  });
-
-  // 삭제 성공 팝업
-  const successAlert = createAlert({
-    type: SUCCESS,
-    content: "포켓몬이 삭제되었습니다.",
-  });
+  const alert = (type, content) => createAlert({ type, content })();
 
   // 포켓몬이 들어있지 않은 포켓볼의 개수
   const emptyPokeBalls = new Array(MAXIMUM_POKEMON - pokemonList.length).fill(
@@ -31,9 +21,9 @@ export default function Dashboard({ pokemonList, setMyPokemonList }) {
   // 나만의 포켓몬 리스트에서 포켓몬을 삭제하는 이벤트
   const handleDelete = (targetPokemon) => {
     const { id } = targetPokemon;
-    confirmDelete().then((res) => {
+    alert(WARNING, "포켓몬을 삭제하시겠습니까?").then((res) => {
       if (res.isConfirmed) {
-        successAlert();
+        alert(SUCCESS, "포켓몬이 삭제되었습니다.");
         const newPokemonList = myPokemonList.filter((pokemon) =>
           pokemon ? pokemon.id !== id : pokemon
         );
