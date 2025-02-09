@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router";
 import { ALERT_TYPE, VALIDATION_RESULT } from "../constant/constant";
 import { ALERT_MESSAGE } from "../constant/message";
-import MOCK_DATA from "../data/mockData";
+import { MOCK_DATA_MAP } from "../data/mockData";
 import { addPokemon } from "../redux/store/pokemonSlice";
 import { Button, FlexBox, Dl, H3, P } from "../style/styledComponents";
 import { createAlert } from "../utils/createAlert";
@@ -11,9 +11,6 @@ import { checkValidPokemon } from "../utils/validation";
 const { SUCCESS, ERROR } = ALERT_TYPE;
 const { OVER, ADD, DUPLICATED } = ALERT_MESSAGE;
 const { PASS, OVER_MAXIMUM, DUPLICATION } = VALIDATION_RESULT;
-
-// MOCK_DATA를 Map()으로 처리해 해당 포켓몬을 좀 더 빨리 찾아올 수 있도록 처리
-const _MOCK_DATA = new Map(MOCK_DATA.map((data) => [String(data.id), data]));
 
 export default function DetailPokemon() {
   const dispatch = useDispatch();
@@ -24,7 +21,7 @@ export default function DetailPokemon() {
 
   useEffect(() => {
     const targetPokemonId = searchParams.get("id");
-    const targetPokemonData = _MOCK_DATA.get(targetPokemonId);
+    const targetPokemonData = MOCK_DATA_MAP.get(targetPokemonId);
     setPokemon(targetPokemonData);
   }, [searchParams]);
 

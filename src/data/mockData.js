@@ -1244,4 +1244,12 @@ const parsedData = (data) => {
   });
 };
 
+// 포켓몬 디테일 페이지에서 빠르게 타겟 데이터를 찾을 수 있도록 new Map을 사용
+// 컴포넌트 내부에 선언 시, 디테일 페이지 진입 때마다 MOCK_DATA_MAP이 재할당되어 new Map을 쓰는 의미가 사라지기 때문에
+// 외부 파일에 따로 분리하여 사용
+
+export const MOCK_DATA_MAP = new Map(
+  MOCK_DATA.map((data) => [String(data.id), data])
+);
+
 export default parsedData(MOCK_DATA);
