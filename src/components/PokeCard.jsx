@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router";
 import { Button, Card, H4 } from "../style/styledComponents";
 import { useMemo } from "react";
+import { ACTION_TYPE } from "../constant/constant";
+const { ADD } = ACTION_TYPE;
 export default function PokeCard({
   data,
   buttonType = "add",
   buttonEventHandler,
 }) {
   const navigate = useNavigate();
-  const isAddButton = useMemo(() => buttonType === "add", [buttonType]); // 해당 포켓 카드의 버튼이 '추가'인지 '삭제'인지 판별
+  const isAddButton = useMemo(() => buttonType === ADD, [buttonType]); // 해당 포켓 카드의 버튼이 '추가'인지 '삭제'인지 판별
 
   // 디테일 페이지로 이동하는 함수
   const goToDetailPage = (targetId) => {

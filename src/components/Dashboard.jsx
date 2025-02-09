@@ -1,29 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
+import { ACTION_TYPE, ALERT_TYPE } from "../constant/constant";
+import { usePokemonContext } from "../context/usePokemonContext";
 import { Board, FlexBox, H3 } from "../style/styledComponents";
+import { createAlert } from "../utils/createAlert";
 import { MAXIMUM_POKEMON } from "../utils/validation";
 import PokeBall from "./PokeBall";
 import PokeCard from "./PokeCard";
-import { deletePokemon } from "../redux/store/pokemonSlice";
-import { createAlert } from "../utils/createAlert";
-import { ALERT_TYPE } from "../constant/constant";
 
 const { WARNING, SUCCESS } = ALERT_TYPE;
+const { DELETE } = ACTION_TYPE;
 
 export default function Dashboard() {
-  const dispatch = useDispatch();
-  const pokemonList = useSelector((state) => state.pokemon); // store에 저장된 포켓볼에 저장된 포켓몬들
+  const { pokemonList, handlePokemonList } = usePokemonContext();
 
-  // 삭제 재확인 팝업
-  const confirmDelete = createAlert({
-    type: WARNING,
-    content: "포켓몬을 삭제하시겠습니까?",
-  });
-
-  // 삭제 성공 팝업
-  const successAlert = createAlert({
-    type: SUCCESS,
-    content: "포켓몬이 삭제되었습니다.",
-  });
+  const alert = (type, content) => createAlert({ type, content })();
 
   // 포켓몬이 들어있지 않은 포켓볼의 개수
   const emptyPokeBalls = new Array(MAXIMUM_POKEMON - pokemonList.length).fill(
@@ -35,11 +24,10 @@ export default function Dashboard() {
 
   // 나만의 포켓몬 리스트에서 포켓몬을 삭제하는 이벤트
   const handleDelete = (targetPokemon) => {
-    const { id } = targetPokemon;
-    confirmDelete().then((res) => {
+    alert(WARNING, "포켓몬을 삭제하시곘습니까?").then((res) => {
       if (res.isConfirmed) {
-        successAlert();
-        dispatch(deletePokemon(id));
+        alert(SUCCESS, "포켓몬이 삭제되었습니다.");
+        handlePokemonList({ type: DELETE, target: targetPokemon });
       }
     });
   };
@@ -59,7 +47,7 @@ export default function Dashboard() {
             <PokeCard
               key={`pokemonCard_${pokemon.id}`}
               data={pokemon}
-              buttonType={"delete"}
+              buttonType={DELETE}
               buttonEventHandler={handleDelete}
             />
           ) : (

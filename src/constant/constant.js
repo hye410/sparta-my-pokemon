@@ -11,3 +11,8 @@ export const VALIDATION_RESULT = Object.freeze({
   OVER_MAXIMUM: "overMaximum", // 추가 가능 개수 초과
   DUPLICATION: "duplication", // 중복된 포켓몬
 });
+
+export const ACTION_TYPE = Object.freeze({
+  ADD: "add",
+  DELETE: "delete",
+});
