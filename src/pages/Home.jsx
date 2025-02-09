@@ -1,7 +1,13 @@
-import { Link } from "react-router";
-import { FlexBox, Button, P } from "../style/styledComponents";
+import { useNavigate } from "react-router";
+import { Button, FlexBox, P } from "../style/styledComponents";
 
 export default function Home() {
+  const navigate = useNavigate();
+
+  const goToPokemonBook = () => {
+    navigate("/dex");
+  };
+
   return (
     <FlexBox $flexDirection="column" $width="100%">
       <P>
@@ -11,16 +17,15 @@ export default function Home() {
           alt="my pokemon book"
         />
       </P>
-      <Link to="/dex">
-        <Button
-          $margin="3vh 0 0 0"
-          $width="15%"
-          $minWidth="135px"
-          $maxWidth="300px"
-        >
-          포켓몬 도감 시작하기
-        </Button>
-      </Link>
+      <Button
+        $margin="3vh 0 0 0"
+        $width="15%"
+        $minWidth="135px"
+        $maxWidth="300px"
+        onClick={goToPokemonBook}
+      >
+        포켓몬 도감 시작하기
+      </Button>
     </FlexBox>
   );
 }
