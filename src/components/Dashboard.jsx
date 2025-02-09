@@ -1,18 +1,13 @@
-import { useDispatch, useSelector } from "react-redux";
 import { Board, FlexBox, H3 } from "../style/styledComponents";
 import { MAXIMUM_POKEMON } from "../utils/validation";
 import PokeBall from "./PokeBall";
 import PokeCard from "./PokeCard";
-import { deletePokemon } from "../redux/store/pokemonSlice";
 import { createAlert } from "../utils/createAlert";
 import { ALERT_TYPE } from "../constant/constant";
 
 const { WARNING, SUCCESS } = ALERT_TYPE;
 
-export default function Dashboard() {
-  const dispatch = useDispatch();
-  const pokemonList = useSelector((state) => state.pokemon); // store에 저장된 포켓볼에 저장된 포켓몬들
-
+export default function Dashboard({ pokemonList, setMyPokemonList }) {
   // 삭제 재확인 팝업
   const confirmDelete = createAlert({
     type: WARNING,
@@ -39,7 +34,10 @@ export default function Dashboard() {
     confirmDelete().then((res) => {
       if (res.isConfirmed) {
         successAlert();
-        dispatch(deletePokemon(id));
+        const newPokemonList = myPokemonList.filter((pokemon) =>
+          pokemon ? pokemon.id !== id : pokemon
+        );
+        setMyPokemonList(newPokemonList);
       }
     });
   };

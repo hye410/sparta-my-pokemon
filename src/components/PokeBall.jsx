@@ -1,6 +1,7 @@
+import React from "react";
 import { Card, P } from "../style/styledComponents";
 
-export default function PokeBall() {
+function PokeBall() {
   return (
     <Card $flexDirection="column" $border="3px dashed rgb(205, 205, 205)">
       <P $minWidth="60px">
@@ -13,3 +14,5 @@ export default function PokeBall() {
     </Card>
   );
 }
+
+export default React.memo(PokeBall);

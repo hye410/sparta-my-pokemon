@@ -1,20 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
 import MOCK_DATA from "../data/mockData";
 import { Board, FlexBox } from "../style/styledComponents";
 import { createAlert } from "../utils/createAlert";
 import { checkValidPokemon } from "../utils/validation";
 import PokeCard from "./PokeCard";
-import { addPokemon } from "../redux/store/pokemonSlice";
 import { ALERT_TYPE, VALIDATION_RESULT } from "../constant/constant";
 import { ALERT_MESSAGE } from "../constant/message";
 const { SUCCESS, ERROR } = ALERT_TYPE;
 const { OVER, ADD, DUPLICATED } = ALERT_MESSAGE;
 const { PASS, OVER_MAXIMUM, DUPLICATION } = VALIDATION_RESULT;
 
-export default function PokeList() {
-  const pokemonList = useSelector((state) => state.pokemon);
-  const dispatch = useDispatch();
-
+export default function PokeList({ myPokemonList, setMyPokemonList }) {
   // 포켓몬 추가 완료 팝업
   const successAlert = createAlert({
     type: SUCCESS,
@@ -35,11 +30,11 @@ export default function PokeList() {
 
   // 포켓몬을 추가하는 함수
   const handleAddPokemon = (targetPokemon) => {
-    const validationResult = checkValidPokemon(pokemonList, targetPokemon); // 나만의 포켓몬에 추가할 수 있는지 유효성 검사를 실시
+    const validationResult = checkValidPokemon(myPokemonList, targetPokemon); // 나만의 포켓몬에 추가할 수 있는지 유효성 검사를 실시
 
     if (validationResult === PASS) {
       successAlert();
-      dispatch(addPokemon(targetPokemon));
+      setMyPokemonList((prev) => [...prev, targetPokemon]);
     } // 검사 통과
 
     if (validationResult === OVER_MAXIMUM) overMaximumAlert(); // 추가 가능 개수 초과

@@ -1,21 +1,10 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router";
-import { ALERT_TYPE, VALIDATION_RESULT } from "../constant/constant";
-import { ALERT_MESSAGE } from "../constant/message";
 import { MOCK_DATA_MAP } from "../data/mockData";
-import { addPokemon } from "../redux/store/pokemonSlice";
-import { Button, FlexBox, Dl, H3, P } from "../style/styledComponents";
-import { createAlert } from "../utils/createAlert";
-import { checkValidPokemon } from "../utils/validation";
-const { SUCCESS, ERROR } = ALERT_TYPE;
-const { OVER, ADD, DUPLICATED } = ALERT_MESSAGE;
-const { PASS, OVER_MAXIMUM, DUPLICATION } = VALIDATION_RESULT;
+import { Button, Dl, FlexBox, H3, P } from "../style/styledComponents";
 
 export default function DetailPokemon() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const pokemonList = useSelector((state) => state.pokemon);
   const [searchParams] = useSearchParams();
   const [pokemon, setPokemon] = useState([]);
 
@@ -30,37 +19,6 @@ export default function DetailPokemon() {
     navigate(-1);
   };
 
-  // 추가 완료 팝업
-  const successAlert = createAlert({
-    type: SUCCESS,
-    content: ADD,
-  });
-
-  // 중복된 포켓몬을 알리는 팝업
-  const duplicationAlert = createAlert({
-    type: ERROR,
-    content: DUPLICATED,
-  });
-
-  // 추가 가능 개수를 초과함을 알리는 팝업
-  const overMaximumAlert = createAlert({
-    type: ERROR,
-    content: OVER,
-  });
-
-  // 포켓몬을 추가하는 함수
-  const handleAddPokemon = (newPokemon) => {
-    const validationResult = checkValidPokemon(pokemonList, newPokemon); // 나만의 포켓몬에 추가할 수 있는지 유효성 검사를 실시
-
-    if (validationResult === PASS) {
-      successAlert();
-      dispatch(addPokemon(newPokemon));
-    } // 검사 통과
-
-    if (validationResult === OVER_MAXIMUM) overMaximumAlert(); // 추가 가능 개수 초과
-    if (validationResult === DUPLICATION) duplicationAlert(); // 중복된 포켓몬
-  };
-
   return (
     <FlexBox $flexDirection="column">
       <P $width="300px">
@@ -72,14 +30,6 @@ export default function DetailPokemon() {
         <dd>{pokemon.types?.join(",")}</dd>
       </Dl>
       <P $marginBottom="50px">{pokemon.description}</P>
-      <Button
-        $padding="11px 20px"
-        $width="100px"
-        $margin="0 0 20px 0"
-        onClick={() => handleAddPokemon(pokemon)}
-      >
-        추가
-      </Button>
       <Button
         $padding="11px 20px"
         $width="100px"
