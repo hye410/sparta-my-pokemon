@@ -7,7 +7,7 @@
   About This Project
   </h2> <br>
     나만의 포켓몬을 추가하고 삭제할 수 있는 페이지입니다.<br />
-    🔍  <a href="sparta-my-pokemon-z37n-m6n3akgst-hye410s-projects.vercel.app" target="_blank" >
+    🔍  <a href="https://sparta-my-pokemon-z37n.vercel.app" target="_blank" >
       My Pokemon 페이지 보러가기
     </a>
   <br />
