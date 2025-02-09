@@ -14,7 +14,7 @@
 </div>
 <div style= "text-align:left">
   <h2 style="display:flex; align-items:center;">
-  <img src="https://e7.pngegg.com/pngimages/476/159/png-clipart-pokemon-pikachu-pikachu-pokemon-games-pokemon-thumbnail.png" width="30px" style="margin-right:10px"/>Features</h2> <br>
+  <img src="https://cdn-icons-png.flaticon.com/128/188/188987.png" width="30px" style="margin-right:10px"/>Features</h2> <br>
     <ol>
       <li>포켓몬을 나만의 포켓몬에 추가할 수 있습니다.</li>
       <li>나만의 포켓몬에 추가된 포켓몬을 삭제할 수 있습니다.</li>
@@ -26,8 +26,8 @@
   <br />
 </div>
 <div style= "text-align:left">
-  <h2>
-  <img src="https://i.namu.wiki/i/BNoqFZ2B7dozB2oiYNwOJB1nVluGnImXJBip5eJhBX2c-ZNXGBGxOXM2VL0fRqABoeJBN5tFmnCxY4Kzk9gYaw.webp" width="30px" >
+  <h2  style="display:flex; align-items:center;">
+  <img src="https://cdn-icons-png.flaticon.com/128/14079/14079426.png" width="30px" >
    TroubleShooting</h2> <br>
     <ul>
       <li>
@@ -50,7 +50,7 @@
 </div>
 <div style="text-align: left;">
   <h2 style="border-bottom: 1px solid #d8dee4; display:flex; align-items:center;">
-  <img src="https://w7.pngwing.com/pngs/37/541/png-transparent-squirtle-thumbnail.png" width="30px" style="margin-right:10px" />
+  <img src="https://cdn-icons-png.flaticon.com/128/1752/1752681.png" width="30px" style="margin-right:10px" />
   Tech Stacks </h2> <br> 
     <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
           <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white">
@@ -62,7 +62,7 @@
 
 <div style="text-align: left;">
   <h2 style="border-bottom: 1px solid #d8dee4;">
-  <img src="https://i.namu.wiki/i/aVdE5JM_lykdqOsArR6dwB28NLLh6GIIUypBlCNRF0s1xl2idOtlldf2ijaOLRdye7etopzqj6DpPBekH1FwcA.webp" width="30px" style="margin-right:10px">
+  <img src="https://cdn-icons-png.flaticon.com/128/1752/1752813.png" width="30px" style="margin-right:10px">
    Contact me </h2> <br> 
   <div style="text-align: left;"> 
     <a href=> 
